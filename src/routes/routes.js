@@ -1,5 +1,9 @@
 import { Router } from 'express'
-import { createUser } from '../controllers/user.controller.js'
+import { createUser, userProfile } from '../controllers/user.controller.js'
+import jwt from 'jsonwebtoken'
+import User from "../models/user.model.js" //borrar despues
+
+
 
 const router = Router()
 
@@ -13,8 +17,6 @@ router.post('/signin', (req, res, next) => {
 
 })
 
-router.get('/profile', (req, res, next) => {
-    res.send('Mi Perfil en la aplicacion')
-})
+router.get('/profile', userProfile)
 
 export default router
