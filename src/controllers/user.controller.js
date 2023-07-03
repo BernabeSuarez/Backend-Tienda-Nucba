@@ -25,18 +25,8 @@ export const createUser = async (req, res) => {
 }
 
 export const userProfile = async (req, res, next) => {
-    const token = req.headers['x-access-token']
-    if (!token) {
-        res.status(401).json(
-            {
-                auth: false,
-                message: 'No Token Provided!'
-            }
-        )
-    }
-    const decoded = jwt.verify(token, process.env.SECRET_KEY)
 
-    const user = await User.findById(decoded.id, { password: 0 })
+    const user = await User.findById(req.userId, { password: 0 })
     if (!user) {
         return res.status(404).send('No user found')
     }

@@ -16,7 +16,7 @@ userSchema.methods.encryptPass = async (password) => {
 }
 
 userSchema.methods.validatePass = function (password) {
-    return bcrypt.compareSync(password, this.password) // Compara el hash de las
+    return bcrypt.compareSync(password, this.password) // Compara el hash de las passwords
 }
 
 const User = mongoose.model('User', userSchema);

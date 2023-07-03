@@ -1,6 +1,6 @@
 import { Router } from 'express'
 import { createUser, loginUser, userProfile } from '../controllers/user.controller.js'
-import User from "../models/user.model.js" //borrar luego
+import { verifyToken } from '../controllers/verifyToken.js'
 
 
 
@@ -14,6 +14,6 @@ router.post('/signup', createUser)
 
 router.post('/signin', loginUser)
 
-router.get('/profile', userProfile)
+router.get('/profile', verifyToken, userProfile)
 
 export default router
