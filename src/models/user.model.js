@@ -15,6 +15,10 @@ userSchema.methods.encryptPass = async (password) => {
     return bcrypt.hash(password, salt)
 }
 
+userSchema.methods.validatePass = function (password) {
+    return bcrypt.compareSync(password, this.password) // Compara el hash de las
+}
+
 const User = mongoose.model('User', userSchema);
 
 export default User

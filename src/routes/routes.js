@@ -1,5 +1,6 @@
 import { Router } from 'express'
-import { createUser, userProfile } from '../controllers/user.controller.js'
+import { createUser, loginUser, userProfile } from '../controllers/user.controller.js'
+import User from "../models/user.model.js" //borrar luego
 
 
 
@@ -11,9 +12,7 @@ router.get('/', (req, res) => {
 
 router.post('/signup', createUser)
 
-router.post('/signin', (req, res, next) => {
-
-})
+router.post('/signin', loginUser)
 
 router.get('/profile', userProfile)
 

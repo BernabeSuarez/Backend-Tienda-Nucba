@@ -42,3 +42,19 @@ export const userProfile = async (req, res, next) => {
     }
     res.json(user)
 }
+
+export const loginUser = async (req, res, next) => {
+    const { email, password } = req.body
+    const user = await User.findOne({ email: email })
+    if (!user) {
+        return res.status(404).send("El email no existe")
+    }
+    const validPass = await user.validatePass(password)
+    if (!validPass) {
+        return res.status(401).json({ auth: false, token: null })
+    }
+    const token = jwt.sign({ id: user._id }, process.env.SECRET_KEY, {
+        expiresIn: 60 * 60
+    })
+    res.status(200).json({ auth: true, token })
+}
