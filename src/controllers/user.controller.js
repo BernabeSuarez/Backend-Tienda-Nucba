@@ -30,6 +30,7 @@ export const userProfile = async (req, res, next) => {
     if (!user) {
         return res.status(404).send('No user found')
     }
+    const id = req.params.id
     res.json(user)
 }
 

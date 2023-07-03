@@ -11,9 +11,10 @@ router.get('/', (req, res) => {
 })
 
 router.post('/signup', createUser)
-
 router.post('/signin', loginUser)
+router.get('/profile/:id', verifyToken, userProfile)
 
-router.get('/profile', verifyToken, userProfile)
+
+
 
 export default router
