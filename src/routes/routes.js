@@ -7,7 +7,14 @@ router.get('/', (req, res) => {
     res.send('Hello World')
 })
 
-router.post('/users', createUser)
+router.post('/signup', createUser)
 
+router.post('/signin', (req, res, next) => {
+
+})
+
+router.get('/profile', (req, res, next) => {
+    res.send('Mi Perfil en la aplicacion')
+})
 
 export default router
