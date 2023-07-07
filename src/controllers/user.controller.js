@@ -15,7 +15,7 @@ export const createUser = async (req, res) => {
         const saveUser = await user.save() // guarda en la db mongoose
 
         const token = jwt.sign({ id: user._id }, process.env.SECRET_KEY, {
-            expiresIn: 60 * 60
+            expiresIn: 60 * 60 * 24
         }) //crear un token unico por cada usuario, expiresIn determina cuando se vencera ese token
         res.status(200).json({ auth: true, token })
 
