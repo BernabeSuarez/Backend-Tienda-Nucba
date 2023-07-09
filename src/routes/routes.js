@@ -5,6 +5,7 @@ import { addProduct, getProducts, updateProducts, deleteProducts } from '../cont
 import { getCategories, addCategories } from '../controllers/categories.controller.js'
 
 
+
 const router = Router()
 
 router.get('/', (req, res) => {
@@ -14,7 +15,8 @@ router.get('/', (req, res) => {
 //User Routes
 router.post('/signup', createUser)
 router.post('/signin', loginUser)
-router.get('/profile/:id', verifyToken, userProfile)
+router.get('/currentUser', verifyToken)
+
 
 //Products Routes
 router.post('/product', addProduct)
