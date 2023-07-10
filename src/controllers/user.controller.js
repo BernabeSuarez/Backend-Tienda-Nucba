@@ -47,5 +47,10 @@ export const loginUser = async (req, res, next) => {
     const token = jwt.sign({ id: user._id }, process.env.SECRET_KEY, {
         expiresIn: 30   //tiempo que tiene validez el token
     })
-    res.status(200).json({ token: token })
+    res.cookie('token', token) //almacena el token
+    res.status(200).json({   //devuelve el usuario
+        id: user._id,
+        name: user.name,
+        email: user.email
+    })
 }
