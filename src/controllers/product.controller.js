@@ -8,7 +8,7 @@ export const addProduct = async (req, res, next) => {
             img: img,
             section: section,
             description: description,
-            price, price
+            price: price
         })
 
         const saveProduct = await product.save()

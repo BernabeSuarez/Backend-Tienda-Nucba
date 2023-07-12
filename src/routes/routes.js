@@ -15,7 +15,7 @@ router.get('/', (req, res) => {
 //User Routes
 router.post('/signup', createUser)
 router.post('/signin', loginUser)
-router.get('/currentUser', verifyToken)
+router.get('/checktoken', verifyToken)
 
 
 //Products Routes

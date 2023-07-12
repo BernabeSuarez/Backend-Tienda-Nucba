@@ -42,12 +42,12 @@ export const loginUser = async (req, res, next) => {
     }
     const validPass = await user.validatePass(password)
     if (!validPass) {
-        return res.status(401).json({ auth: false, token: null })
+        return res.status(401).json({ auth: false, token: null, nessage: "Incorrect Password" })
     }
     const token = jwt.sign({ id: user._id }, process.env.SECRET_KEY, {
-        expiresIn: 30   //tiempo que tiene validez el token
+        expiresIn: 60 * 60 * 24   //tiempo que tiene validez el token
     })
-    res.cookie('token', token) //almacena el token
+    res.cookie('token', token, { maxAge: 900000, secure: true }) //almacena el token
     res.status(200).json({   //devuelve el usuario
         id: user._id,
         name: user.name,

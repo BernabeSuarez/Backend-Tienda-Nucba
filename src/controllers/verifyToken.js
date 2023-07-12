@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken'
 
 export function verifyToken(req, res, next) {
-    const token = req.headers['auth']
+    const token = req.cookies
     if (!token) {
         res.status(401).json(
             {
@@ -13,7 +13,7 @@ export function verifyToken(req, res, next) {
     const decoded = jwt.verify(token, process.env.SECRET_KEY)
     req.userId = decoded.id
     console.log(req.userId)
-    res.status(200).json({currentUser: req.userId })
+    res.status(200).json({ currentUser: req.userId })
     next()
 }
 
