@@ -51,6 +51,7 @@ export const loginUser = async (req, res, next) => {
     res.status(200).json({   //devuelve el usuario
         id: user._id,
         name: user.name,
-        email: user.email
-    }).send(token)
+        email: user.email,
+        token: token
+    })
 }
