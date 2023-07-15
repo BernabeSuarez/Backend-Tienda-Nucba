@@ -13,12 +13,8 @@ router.get('/', (req, res) => {
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <link rel="icon" type="image/x-icon" href="favicon.ico" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Backend Tienda Nucba</title>
 </head>
-
 <body>
   <h1>Backend Tienda Nucba</h1>
   <h2>Proyecto integrador backend</h2>
