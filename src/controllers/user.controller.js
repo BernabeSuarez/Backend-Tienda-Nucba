@@ -52,5 +52,5 @@ export const loginUser = async (req, res, next) => {
         id: user._id,
         name: user.name,
         email: user.email
-    })
+    }).send(token)
 }
