@@ -1,8 +1,11 @@
 import Product from "../models/product.model.js";
+import { uploadImage } from "../config/cloudinary.js";
 
 export const addProduct = async (req, res, next) => {
     try {
+
         const { name, img, section, description, price } = req.body
+
         const product = new Product({
             name: name,
             img: img,
@@ -10,6 +13,14 @@ export const addProduct = async (req, res, next) => {
             description: description,
             price: price
         })
+        if (req.files?.image) {
+            const result = await uploadImage(req.files.image.tempFilePath)
+            product.img = {
+                public_id: result.public_id,
+                secure_url: result.secure_url
+            }
+
+        }
 
         const saveProduct = await product.save()
         res.status(200).json({ message: "Product Load OK" })

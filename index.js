@@ -3,6 +3,7 @@ import dotenv from 'dotenv'
 import cors from 'cors'
 import router from './src/routes/routes.js'
 import { connectDB } from './src/config/database.js'
+import fileUpload from 'express-fileupload'
 
 dotenv.config()
 const PORT = process.env.PORT || 8080
@@ -21,6 +22,10 @@ app.use((req, res, next) => {
 }) //soluciona el problema de cors
 
 app.use(express.json())
+app.use(fileUpload({
+    useTempFiles: true,
+    tempFileDir: './uploads'
+}));
 app.use(router)
 
 
