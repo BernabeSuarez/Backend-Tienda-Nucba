@@ -3,13 +3,19 @@ import { createUser, loginUser, userProfile } from '../controllers/user.controll
 import { verifyToken } from '../controllers/verifyToken.js'
 import { addProduct, getProducts, updateProducts, deleteProducts } from '../controllers/product.controller.js'
 import { getCategories, addCategories } from '../controllers/categories.controller.js'
+import multer from 'multer'
+
+
+
+
+const upload = multer({ dest: 'uploads/' })
 
 
 
 const router = Router()
 
 router.get('/', (req, res) => {
-    const htmlresponse = `
+  const htmlresponse = `
 <html lang="en">
 
 <head>
@@ -22,7 +28,7 @@ router.get('/', (req, res) => {
 
 </html>
     `
-    res.send(htmlresponse)
+  res.send(htmlresponse)
 })
 
 //User Routes
@@ -32,7 +38,7 @@ router.get('/checktoken', verifyToken)
 
 
 //Products Routes
-router.post('/product', addProduct)
+router.post('/product', upload.single('ProductImage'), addProduct)
 router.get('/products', getProducts)
 router.put('/product/:id', updateProducts)
 router.delete('/product/:id', deleteProducts)
