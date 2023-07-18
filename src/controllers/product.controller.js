@@ -5,24 +5,24 @@ export const addProduct = async (req, res, next) => {
     try {
 
         const { name, img, section, description, price } = req.body
-
+        console.log(req.files)
         const product = new Product({
-            name: name,
-            img: img,
-            section: section,
-            description: description,
-            price: price
+            name,
+            section,
+            description,
+            price
         })
-        if (req.files?.image) {
-            const result = await uploadImage(req.files.image.tempFilePath)
+        if (req.files?.img) {
+            const result = await uploadImage(req.files.img.tempFilePath)
             product.img = {
                 public_id: result.public_id,
                 secure_url: result.secure_url
             }
 
+
         }
 
-        const saveProduct = await product.save()
+        await product.save()
         res.status(200).json({ message: "Product Load OK" })
 
     } catch (error) {
