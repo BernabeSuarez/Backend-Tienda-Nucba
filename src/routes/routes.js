@@ -19,6 +19,13 @@ router.get('/', (req, res) => {
 <body>
   <h1>Backend Tienda Nucba</h1>
   <h2>Proyecto integrador backend</h2>
+  <h3>Tecnologias usadas:</h3>
+  <ul>
+  <li>Node Js</li>
+  <li>Express (Framework)</li>
+  <li>Mongo Db</li>
+  <li>Cloudinary</li>
+  </ul>
 </body>
 
 </html>
