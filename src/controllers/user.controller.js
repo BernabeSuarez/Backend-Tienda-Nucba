@@ -24,6 +24,17 @@ export const createUser = async (req, res) => {
     }
 }
 
+export const getUsers = async (req, res) => {
+    try {
+        const allUsers = await User.find()
+        res.status(200).json(allUsers)
+
+    } catch (error) {
+        console.log(error)
+    }
+
+}
+
 export const userProfile = async (req, res, next) => {
 
     const user = await User.findById(req.userId, { password: 0 })
@@ -42,7 +53,7 @@ export const loginUser = async (req, res, next) => {
     }
     const validPass = await user.validatePass(password)
     if (!validPass) {
-        return res.status(401).json({ auth: false, token: null, nessage: "Incorrect Password" })
+        return res.status(401).send("Contraseña Icorrecta")
     }
     const token = jwt.sign({ id: user._id }, process.env.SECRET_KEY, {
         expiresIn: 60 * 60 * 24   //tiempo que tiene validez el token

@@ -1,5 +1,5 @@
 import { Router } from 'express'
-import { createUser, loginUser } from '../controllers/user.controller.js'
+import { createUser, loginUser, getUsers } from '../controllers/user.controller.js'
 import { verifyToken } from '../controllers/verifyToken.js'
 import { addProduct, getProducts, updateProducts, deleteProducts } from '../controllers/product.controller.js'
 import { addOrder, getOrders } from '../controllers/orders.controller.js'
@@ -37,6 +37,7 @@ router.get('/', (req, res) => {
 router.post('/signup', createUser)
 router.post('/signin', loginUser)
 router.get('/checktoken', verifyToken)
+router.get('/users', getUsers)
 
 
 //Products Routes
