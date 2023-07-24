@@ -4,12 +4,15 @@ import cors from 'cors'
 import router from './src/routes/routes.js'
 import { connectDB } from './src/config/database.js'
 import fileUpload from 'express-fileupload'
+import morgan from 'morgan'
 
 
 dotenv.config()
 const PORT = process.env.PORT || 8080
 const app = express()
+app.use(morgan('dev'))
 connectDB()
+
 
 app.use(cors({
     origin: 'http://localhost:5173' //cambiar por direccion de la pagina

@@ -3,6 +3,7 @@ import { createUser, loginUser, getUsers } from '../controllers/user.controller.
 import { verifyToken } from '../controllers/verifyToken.js'
 import { addProduct, getProducts, updateProducts, deleteProducts } from '../controllers/product.controller.js'
 import { addOrder, getOrders } from '../controllers/orders.controller.js'
+import { payOrder } from '../controllers/payment.controller.js'
 
 
 
@@ -52,5 +53,8 @@ router.delete('/product/:id', deleteProducts)
 router.post('/order', addOrder)
 router.get('/orders', getOrders)
 
+//Payment Routes
+
+router.post('/payment', payOrder)
 
 export default router
