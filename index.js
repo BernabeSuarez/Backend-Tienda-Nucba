@@ -15,7 +15,7 @@ connectDB()
 
 
 app.use(cors({
-    origin: 'http://localhost:5173' //cambiar por direccion de la pagina
+    origin: 'https://tienda-online-nucba.onrender.com' //cambiar por direccion de la pagina
 }))
 
 app.use((req, res, next) => {
