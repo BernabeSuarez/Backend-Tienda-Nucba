@@ -9,7 +9,8 @@ export const payOrder = async (req, res) => {
             title: product.title,
             currency_id: "ARS",
             unit_price: product.unit_price,
-            quantity: 1
+            quantity: 1,
+            description: product.cart
         }],
         back_urls: {
             success: "http://localhost:5173/success", //cambiar las direcciones al host de la pagina
