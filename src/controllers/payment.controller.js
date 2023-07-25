@@ -8,7 +8,7 @@ export const payOrder = async (req, res) => {
         items: [{
             title: product.title,
             currency_id: "ARS",
-            unit_price: product.price,
+            unit_price: product.TotalItems,
             quantity: 1
         }],
         back_urls: {
