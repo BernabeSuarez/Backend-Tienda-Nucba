@@ -12,9 +12,9 @@ export const payOrder = async (req, res) => {
             quantity: 1
         }],
         back_urls: {
-            success: "http://localhost:8080/success", //cambiar las direcciones al host de la pagina
-            failure: "http://localhost:8080/failure",
-            pending: "http://localhost:8080/pending",
+            success: "http://localhost:5173/success", //cambiar las direcciones al host de la pagina
+            failure: "http://localhost:5173/failure",
+            pending: "http://localhost:5173/pending",
         },
         auto_return: "approved",
         binary_mode: true
